@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="grability">GrAbility</h1>
+<h1 id="%E7%B4%B9%E4%BB%8B%E5%8B%95%E7%94%BB"><strong>紹介動画</strong></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JfZP9xSGWfo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+<h1 id="%E4%BD%9C%E5%93%81%E6%A6%82%E8%A6%81"><strong>作品概要</strong></h1>
+<ul>
+<li>
+<h2 id="%E4%BD%9C%E5%93%81%E5%90%8D">作品名</h2>
+<ul>
+<li>Grabillity</li>
+</ul>
+</li>
+<li>
+<h2 id="%E5%AD%A6%E6%A0%A1">学校</h2>
+<ul>
+<li>河原電子ビジネス専門学校</li>
+</ul>
+</li>
+<li>
+<h2 id="%E5%88%B6%E4%BD%9C%E4%BA%BA%E6%95%B0">制作人数</h2>
+<ul>
+<li>3人</li>
+</ul>
+</li>
+<li>
+<h2 id="%E8%A3%BD%E4%BD%9C%E6%9C%9F%E9%96%93">製作期間</h2>
+<ul>
+<li>2021年8月～2022年2月</li>
+</ul>
+</li>
+<li>
+<h2 id="%E5%AF%BE%E5%BF%9C%E3%83%8F%E3%83%BC%E3%83%89">対応ハード</h2>
+<ul>
+<li>PC Windows10</li>
+</ul>
+</li>
+<li>
+<h2 id="%E4%BD%BF%E7%94%A8%E8%A8%80%E8%AA%9E">使用言語</h2>
+<ul>
+<li>C++</li>
+<li>HLSL</li>
+</ul>
+</li>
+<li>
+<h2 id="%E5%88%B6%E4%BD%9C%E7%92%B0%E5%A2%83">制作環境</h2>
+<ul>
+<li>エンジン
+<ul>
+<li>学校内製の簡易エンジン(DirectX12)をエンジニアが改造して使用</li>
+</ul>
+</li>
+<li>プログラム
+<ul>
+<li>Visual Studio 2022</li>
+</ul>
+</li>
+<li>3Dモデル
+<ul>
+<li>Blender</li>
+<li>3DSMax</li>
+</ul>
+</li>
+<li>エフェクト
+<ul>
+<li>Effeckseer</li>
+</ul>
+</li>
+<li>バージョン管理
+<ul>
+<li>GitHub</li>
+</ul>
+</li>
+<li>タスク管理
+<ul>
+<li>Redmine</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h2 id="githuburl">GitHubURL</h2>
+<ul>
+<li>https://github.com/YuMild/GameAwards</li>
+</ul>
+</li>
+<li>
+<h2 id="%E5%82%99%E8%80%83">備考</h2>
+<ul>
+<li>日本ゲーム大賞2022「アマチュア部門」に応募</li>
+<li>日本ゲーム大賞2022「アマチュア部門」一次審査通過</li>
+</ul>
+</li>
+</ul>
+<h1 id="%E3%82%B2%E3%83%BC%E3%83%A0%E5%86%85%E5%AE%B9"><strong>ゲーム内容</strong></h1>
+<p>リアルタイムでボールを弾いてギミックを攻略しながら制限時間内にゴールを目指す3Dアクションゲームです。</p>
+<h1 id="%E6%93%8D%E4%BD%9C%E8%AA%AC%E6%98%8E"><strong>操作説明</strong></h1>
+<p><strong>メニュー操作時</strong><br>
+<img src="メニュー操作時.png" width="400"></img></br>
+<strong>ゲーム操作時</strong><br>
+<img src="ゲーム操作時.png" width="400"></img></br></p>
+<h1 id="%E6%8B%85%E5%BD%93%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89"><strong>担当ソースコード</strong></h1>
+<h1 id="%E5%A5%BD%E6%9D%91-%E9%9B%84%E7%9C%9F">好村 雄真</h1>
+<ul>
+<li>SpriteRender.h(一部)<br>
+(画像の切り取り処理を行う関数の追加)</li>
+<li>SerialNumberSpriteRender.cpp(一部)</li>
+<li>SerialNumberSpriteRender.h(一部)</li>
+<li>PowerCharge.cpp</li>
+<li>PowerCharge.h</li>
+<li>LockOn.cpp</li>
+<li>LockOn.h</li>
+<li>BreakBox.cpp</li>
+<li>BreakBox.h</li>
+<li>Bumper.cpp</li>
+<li>Bumper.h</li>
+<li>Door.cpp</li>
+<li>Door.h</li>
+<li>Drone.cpp</li>
+<li>Drone.h</li>
+<li>Duct.cpp</li>
+<li>Duct.h</li>
+<li>Energy.cpp</li>
+<li>Energy.h</li>
+<li>Engine.cpp</li>
+<li>Engine.h</li>
+<li>Goal.cpp</li>
+<li>Goal.h</li>
+<li>HoneyCombBlock.cpp</li>
+<li>HoneyCombBlock.h</li>
+<li>JumpBoard.cpp</li>
+<li>JumpBoard.h</li>
+<li>Nut.cpp</li>
+<li>Nut.h</li>
+<li>Pipe.cpp</li>
+<li>Pipe.h</li>
+<li>ReSpawnPoint.cpp</li>
+<li>ReSpawnPoint.h</li>
+<li>SignBoard.cpp</li>
+<li>SignBoard.h</li>
+<li>SpeedUpRail.cpp</li>
+<li>SpeedUpRail.h</li>
+<li>Truck.cpp</li>
+<li>Truck.h</li>
+<li>Turret.cpp</li>
+<li>Turret.h</li>
+<li>Volt.cpp</li>
+<li>Volt.h</li>
+<li>Stage_1.cpp</li>
+<li>Stage_1.h</li>
+<li>Stage_1_Stage.cpp</li>
+<li>Stage_1_Stage.h</li>
+<li>Stage_1_Wall.cpp</li>
+<li>Stage_1_Wall.h</li>
+<li>ChargeShot.cpp</li>
+<li>ChargeShot.h</li>
+<li>Length.cpp</li>
+<li>Length.h</li>
+<li>TimeLimit.cpp</li>
+<li>TimeLimit.h</li>
+<li>Window.cpp</li>
+<li>Window.h</li>
+<li>First.cpp</li>
+<li>First.h</li>
+<li>Game.cpp</li>
+<li>Game.h</li>
+<li>GameClear.cpp</li>
+<li>GameClear.h</li>
+<li>GameOver.cpp</li>
+<li>GameOver.h</li>
+<li>Setting.cpp</li>
+<li>Setting.h</li>
+<li>Title.cpp</li>
+<li>title.h</li>
+<li>GameLight.cpp</li>
+<li>GameLight.h</li>
+<li>Player.cpp</li>
+<li>Player.h</li>
+<li>LockOnObject.cpp</li>
+<li>LockOnObject.h</li>
+</ul>
+<h1 id="%E8%B1%8A%E5%B2%A1-%E5%A4%A7">豊岡 大</h1>
+<ul>
+<li>LockOn.cpp(一部)</li>
+<li>(LockOn処理部分を担当)</li>
+<li>LockOn.h(一部)</li>
+<li>(LockOn処理に必要な変数を追加)</li>
+<li>Bloom.cpp</li>
+<li>Bloom.h</li>
+<li>FontRender.cpp</li>
+<li>FontRender.h</li>
+<li>IRenderer.h</li>
+<li>ModelRender.cpp</li>
+<li>ModelRender.h</li>
+<li>PhysicsStaticBox.cpp</li>
+<li>PhysicsStaticBox.h</li>
+<li>PostEffect.cpp</li>
+<li>PostEffect.h</li>
+<li>RenderingEngine.cpp</li>
+<li>RenderingEngine.h</li>
+<li>SceneLight.cpp</li>
+<li>SceneLight.h</li>
+<li>SerialNumberSpriteRender.cpp</li>
+<li>SerialNumberSpriteRender.h</li>
+<li>ShadowMapRender.cpp</li>
+<li>ShadowMapRender.h</li>
+<li>SpringCamera.cpp</li>
+<li>SpringCamera.h</li>
+<li>SpriteRender.cpp</li>
+<li>SpriteRender.h</li>
+<li>LevelRender.cpp</li>
+<li>LevelRender.h</li>
+<li>MapChipRender.cpp</li>
+<li>MapChipRender.h</li>
+<li>Level2DRender.cpp</li>
+<li>Level2DRender.h</li>
+<li>MapChip2DRender.cpp</li>
+<li>MapChip2DRender.h</li>
+</ul>
+<h1 id="%E6%8A%80%E8%A1%93%E7%B4%B9%E4%BB%8B">技術紹介</h1>
+<h1 id="%E5%A5%BD%E6%9D%91%E9%9B%84%E7%9C%9F">好村雄真</h1>
+<h2 id="%E3%82%B3%E3%83%A9%E3%82%A4%E3%83%80%E3%83%BC">コライダー</h2>
+<p>RigitBodyにカメラ方向への力を加算し物理演算する事でプレイヤーの操作を行う都合上、メッシュに合わせてコライダーを自動生成するメッシュコライダーではすり抜けが多発してしまいます。</p>
+<p>ですので、通常60FPSで一度のみの当たり判定を行っている処理を4回に増やし、当たり判定のみ疑似的に240FPSで実行しています。</p>
+<p>しかし、それでも稀にすり抜けが発生してしまいましたので、3DSMaxにて配置したBoxオブジェクトの位置、大きさ、回転をC++側で読み取り、Boxコライダーとして配置するシステムを取り入れました。上記の二つの方法を取り入れた後はすり抜けが発生しなくなりました。</p>
+<h2 id="%E3%83%AD%E3%83%83%E3%82%AF%E3%82%AA%E3%83%B3">ロックオン</h2>
+<p>ロックオン可能なオブジェクトはLockOnObjectという基底オブジェクトを派生クラスとして作成し、LockOnObjectのポジションを都度取得します。その後、全てのLockOnObjectとプレイヤー自身の距離を求め、一番近いオブジェクトのワールド座標をスクリーン座標に変換して実装しています。</p>
+<h2 id="%E3%82%AB%E3%83%A1%E3%83%A9%E7%A7%BB%E5%8B%95">カメラ移動</h2>
+<p>スピード感を演出する為に、プレイヤの速度に応じてカメラの追従の速度を変化させています。<br>
+<strong>通常時</strong><br>
+<img src="カメラ通常時.png" width="400"></img></br>
+<strong>遅延発生時</strong><br>
+<img src="カメラ遅延発生時.png" width="400"></img></br></p>
+<h1 id="%E8%B1%8A%E5%B2%A1%E5%A4%A7"><strong>豊岡大</strong></h1>
+<h2 id="%E5%B7%9D%E7%80%AC%E5%BC%8F%E3%83%96%E3%83%AB%E3%83%BC%E3%83%A0">川瀬式ブルーム</h2>
+<p>通常シーンをオフスクリーンレンダリング後、輝度抽出を行い、ガウシアンブラーとダウンサンプリングを繰り返して複数枚のテクスチャを作成して、
+複数枚のテクスチャの平均を取って加算合成することで光のあふれを表現できるようになっています。<br>
+<strong>通常シーン</strong><br>
+<img src="通常シーン.png" width="400"></img></br>
+<strong>輝度抽出</strong><br>
+<img src="輝度抽出.png" width="400"></img></br>
+<strong>ガウシアンブラーとダウンサンプリング(これを数回繰り返す)</strong><br>
+<img src="ダウンサンプリング.png" width="400"></img></br>
+<strong>加算合成後</strong><br>
+<img src="加算合成後.png" width="400"></img></br></p>
+<h2 id="%E5%88%B6%E9%99%90%E6%99%82%E9%96%93%E3%81%AE%E8%A1%A8%E7%8F%BE">制限時間の表現</h2>
+<p>制限時間が迫っている時の危機感を演出する為に、残り時間が一定を下回ると、Model描画時のColorにRを加算し、3Dモデルのみ赤みを帯びさせています。</p>
+<p><strong>通常時</strong><br>
+<img src="制限時間_通常時.png" width="400"></img></br>
+<strong>一定時間を切った時</strong><br>
+<img src="制限時間_異常時.png" width="400"></img></br></p>
+<h2 id="%E3%83%A2%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%96%E3%83%A9%E3%83%BC">モーションブラー</h2>
+<p>現在のモデルの位置と１フレーム前のモデルの位置から
+そのピクセルの移動速度を計算、速度マップを描画。<br>
+その速度マップを使用して通常シーンを速度方向にずらして複数回サンプリングして平均を取ってそのテクスチャを加算合成することで<br>
+残像のようなポストエフェクトを表現しています。<br>
+<strong>通常シーン</strong><br>
+<img src="モーションブラー通常.png" width="400"></img></br>
+<strong>速度マップ</strong><br>
+<img src="モーションブラー通常.png" width="400"></img></br>
+<strong>加算合成後</strong><br>
+<img src="モーションブラー通常.png" width="400"></img></br></p>
+<p><a id="anchor7"></a></p>
+<p><strong>これでGrAbilityの紹介は以上です。</strong></p>
+
+</body>
+</html>
